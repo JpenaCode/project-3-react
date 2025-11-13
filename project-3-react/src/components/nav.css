@@ -1,0 +1,19 @@
+.navSection {
+  display: flex;
+  justify-content: center;       
+  list-style: none; 
+  background-color: #222;
+  padding: 1rem;
+  margin: 0;
+}
+
+.nav-item {
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-item:hover {
+  color: yellow;
+}
