@@ -28,7 +28,7 @@ const handleSubmit = async (event) => {
 
   const firstBook = JSONdata[0];
 
-  setTitle(JSONdata.title)
+  setTitle(firstBook.title)
 	setAuthor(firstBook.author)
   setGenre(firstBook.genre)
 };
