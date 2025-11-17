@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import NavBar from './components/nav.jsx'
-import BookCard from './components/nav.jsx'
+import BookCard from './components/Bookcard.jsx'
 
 
 
