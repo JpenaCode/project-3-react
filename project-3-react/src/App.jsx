@@ -1,5 +1,6 @@
-// src/App.jsx
-import { useState } from 'react';
+import { useState } from 'react'
+import './App.css'
+import NavBar from 'project-3-react/src/components/nav.jsx'
 
 
 
@@ -8,7 +9,7 @@ import { useState } from 'react';
 const App = () => {
 	const [title, setTitle] = useState('');
 	const [author, setAuthor] = useState('');
-  const [genre, setGenre] = useState('')
+  const [genre, setGenre] = useState('');
 
   const [searchTerm, setSearchTerm] = useState(''); // this was not in the lesson, this seperates the search state from the name state
 
@@ -35,6 +36,7 @@ const handleSubmit = async (event) => {
   
   return (
     <>
+      <NavBar key="nav"></NavBar>
       <form onSubmit={handleSubmit}>
         Search your book :
         <input type="text" onChange={handleChange} value={searchTerm}/> {/* i added the value={searchTerm}, this makes it so the that when the user types it shows up in the input and only in the input*/}
@@ -49,4 +51,5 @@ const handleSubmit = async (event) => {
   );
 };
 
-export default App
+
+export default App;
