@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import './App.css'
 import NavBar from './components/nav.jsx'
+import BookCard from './components/nav.jsx'
+
 
 
 
 
 // import statements above
 const App = () => {
+  const [books, setBooks] = useState([]);
 	const [title, setTitle] = useState('');
 	const [author, setAuthor] = useState('');
   const [genre, setGenre] = useState('');
@@ -17,7 +20,7 @@ const App = () => {
   setSearchTerm(event.target.value); // i replaced the setName to setSearchTerm so only the input updates and not the <p>Starship Name: {name}</p>
 };
 
-// const YOUR_API_KEY = '93926e8f19954ff8892185839241302'
+// const YOUR_API_KEY = '93926e8f19954ff8892185839241302' // ?? 
 
 const handleSubmit = async (event) => {
 	event.preventDefault();
@@ -33,10 +36,17 @@ const handleSubmit = async (event) => {
 	setAuthor(firstBook.author)
   setGenre(firstBook.genre)
 };
-  
+// need to go over of when the data needs to be fetched. The way I understand it is that the data needs to be fetched
+// using useEffect so that the data loads when the page is loaded. From there we can use a handleChange variable 
+// to filter the data that is already rendered by useEffect. 
+
+
+
+  // added lines 43, 4, 12 ***********
   return (
     <>
-      <NavBar key="nav"></NavBar>
+      <NavBar></NavBar>
+      <BookCard books={books}></BookCard>
       <form onSubmit={handleSubmit}>
         Search your book :
         <input type="text" onChange={handleChange} value={searchTerm}/> {/* i added the value={searchTerm}, this makes it so the that when the user types it shows up in the input and only in the input*/}
