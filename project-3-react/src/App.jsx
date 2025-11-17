@@ -46,18 +46,20 @@ const App = () => {
 // ----------------------------------------------------------------
 // const YOUR_API_KEY = '93926e8f19954ff8892185839241302'
 
-// const handleSubmit = async (event) => {
-// 	event.preventDefault();
-// 	let response = await fetch(
-// 		`https://swapi.dev/api/starships/?search=${searchTerm}`
-// 	);
-// 	let JSONdata = await response.json();
-// 	console.log(JSONdata)
-//   setName(JSONdata.results[0].name)
-// 	setStarship_Class(JSONdata.results[0].starship_class)
-// 	setManufacturer(JSONdata.results[0].manufacturer)
-//   setModel(JSONdata.results[0].model)
-// };
+const handleSubmit = async (event) => {
+	event.preventDefault();
+
+	let response = await fetch(
+		`http://localhost:3000/books`
+	);
+	let JSONdata = await response.json();
+
+  const firstBook = JSONdata[0];
+
+  setTitle(firstBook.title)
+	setAuthor(firstBook.author)
+  setGenre(firstBook.genre)
+};
   
   return (
     <>
