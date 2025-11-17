@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import NavBar from 'project-3-react/src/components/nav.jsx'
+import NavBar from './components/nav.jsx'
 
 
 
