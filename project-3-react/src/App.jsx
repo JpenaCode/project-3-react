@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import NavBar from 'project-3-react/src/components/nav.jsx'
+import NavBar from './components/nav.jsx'
 
 
 
@@ -40,13 +40,16 @@ const handleSubmit = async (event) => {
       <form onSubmit={handleSubmit}>
         Search your book :
         <input type="text" onChange={handleChange} value={searchTerm}/> {/* i added the value={searchTerm}, this makes it so the that when the user types it shows up in the input and only in the input*/}
-        <input type="submit" value="book search" />
+        <input type="submit" value="book search" /> {/* this is the search button */}
       </form>
      
       <h1>Book:</h1>
       <p>Book Title: {title}</p>
       <p>Book Author: {author}</p>
       <p>Book Genre: {genre}</p>
+      <form> Update Book:
+      <input />
+      </form>
     </>
   );
 };
