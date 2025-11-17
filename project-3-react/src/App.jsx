@@ -9,7 +9,8 @@ import BookCard from './components/nav.jsx'
 
 // import statements above
 const App = () => {
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState([]); 
+  // setting 'books' as the useState variable. That way we can reference title, author, genre. 
 	const [title, setTitle] = useState('');
 	const [author, setAuthor] = useState('');
   const [genre, setGenre] = useState('');
