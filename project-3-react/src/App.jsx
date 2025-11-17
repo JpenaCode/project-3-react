@@ -20,51 +20,58 @@ const App = () => {
     const getData = async () => {
       const response = await fetch('http://localhost:3000/books');
       const JSONdata = await response.json();
-      setBooks(JSONdata.results); // this an array of all of the data that was fetched from /books
+      setBooks(JSONdata); // this an array of all of the data that was fetched from /books 
     };
     getData();
   }, []); 
   // useEffect helps to upload the data as soon as the page is loaded. 
+  // the extra [] in line 26 is called a dependency array. 
+  // which tells the code to run / fetch as soon as the page loads. 
 
   // ====================================
 
 
 // Search bar ===========================
-  const [searchTerm, setSearchTerm] = useState(''); // this was not in the lesson, this seperates the search state from the name state
+  const [searchTerm, setSearchTerm] = useState(''); 
+  // this was not in the lesson, this seperates the search state from the name state
+  // line searchTerm setState Variable tracks the values found in the search bar. 
+  // starts empty ('') but as the user types, it updates immedietly. 
 
   const handleChange = (event) => {
-  setSearchTerm(event.target.value); // i replaced the setName to setSearchTerm so only the input updates and not the <p>Starship Name: {name}</p>
+  setSearchTerm(event.target.value); 
+  // i replaced the setName to setSearchTerm so only the input updates and not the <p>Starship Name: {name}</p>
+  // event.target.value updates setSearchTerm with value={searchTerm} from the input. 
 };
+  const filteredBooks = books.filter((book) =>
+  book.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
+// .filter is a method that searches 'books' and returns only the ones that meet the requiremens. 
+// .toLowerCase makes it to where the search is not case sensitive. 
+// Doesnt matter what the user puts in, it'll be turned to lower case. 
+// .includes helps return any books that have any letters included in the searchTerm 
 
-const handleSubmit = async (event) => {
-	event.preventDefault();
 
-	let response = await fetch(
-		`http://localhost:3000/books`
-	);
-	let JSONdata = await response.json();
-   // data can also be refreshed / fetched when there is an event using a handler. 
-  const firstBook = JSONdata[0];
-
-  setTitle(firstBook.title)
-	setAuthor(firstBook.author)
-  setGenre(firstBook.genre)
-};
 // ======================================
 
   return (
     <>
       <NavBar></NavBar>
-      <BookCard books={books}></BookCard>
-      <form onSubmit={handleSubmit}>
-        Search your book :
-        <input type="text" onChange={handleChange} value={searchTerm}/> {/* i added the value={searchTerm}, this makes it so the that when the user types it shows up in the input and only in the input*/}
-        <input type="submit" value="book search" />
-      </form>
-     
-      <h1>Book: {title}</h1>
-      <p>Author: {author}</p>
-      <p>Genre: {genre}</p>
+      <input
+          type="text"
+          placeholder="Search Library"
+          value={searchTerm} 
+          // value= is a control input that helps us manage the state of 'searchTerm'
+          onChange={handleChange}
+          // onChange= another control input that tracks the changes which then impact setSearchTerm. 
+          // Therefore changing searchTerm.
+
+
+          // No longer have to pass the entire 'books' array  to BookCard because when the search bar is empty
+          // searchTerm useState will be empty so 'filteredBooks will return all of the items in the array. 
+        />
+      <BookCard books={filteredBooks}>
+        
+      </BookCard>
     </>
   );
 };

@@ -2,16 +2,15 @@
   display: flex;
   justify-content: center;       
   list-style: none; 
-  background-color: #222;
-  padding: 1rem;
-  margin: 0;
+  background-color: grey;
+  margin-bottom: 30px;
 }
 
 .nav-item {
   color: white;
   font-weight: 500;
   cursor: pointer;
-  transition: color 0.2s ease-in-out;
+  
 }
 
 .nav-item:hover {
@@ -20,6 +19,6 @@
 
 ul {
   list-style: none;
-  padding: 0;
+  padding: 30px;
   margin: 0;
 }
