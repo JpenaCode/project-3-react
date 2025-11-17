@@ -14,22 +14,25 @@ const App = () => {
 	// const [author, setAuthor] = useState('');
   // const [genre, setGenre] = useState('');
 
+  
 
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch('http://localhost:3000/books ');
+      const response = await fetch('http://localhost:3000/books');
       const JSONdata = await response.json();
 
       setBooks(JSONdata.results); // make sure this is an array
-      console.log(books)
     };
 
     getData();
   }, []);
 
-  const filteredBooks = books.filter(book =>
-  book.name.toLowerCase().includes(search.toLowerCase())
-  );  
+  console.log(books)
+
+  // const filteredBooks = books.filter(book =>
+  // book.name.toLowerCase().includes(search.toLowerCase())
+  // );  
+
   // helps with the filtering process
 
 
@@ -42,29 +45,28 @@ const App = () => {
 };
 
 
-// Below is the Starthip lab 
-// ----------------------------------------------------------------
-// const YOUR_API_KEY = '93926e8f19954ff8892185839241302'
 
-const handleSubmit = async (event) => {
-	event.preventDefault();
+// const handleSubmit = async (event) => {
+// 	event.preventDefault();
 
-	let response = await fetch(
-		`http://localhost:3000/books`
-	);
-	let JSONdata = await response.json();
+// 	let response = await fetch(
+// 		`http://localhost:3000/books`
+// 	);
+// 	let JSONdata = await response.json();
 
-  const firstBook = JSONdata[0];
+//   const firstBook = JSONdata[0];
 
-  setTitle(firstBook.title)
-	setAuthor(firstBook.author)
-  setGenre(firstBook.genre)
-};
+//   setTitle(firstBook.title)
+// 	setAuthor(firstBook.author)
+//   setGenre(firstBook.genre)
+// };
   
   return (
     <>
       <NavBar key="nav"></NavBar>
-      <BookCard books={filteredBooks}></BookCard>
+      <BookCard 
+      books={books}
+      ></BookCard>
     </>
   );
 };
