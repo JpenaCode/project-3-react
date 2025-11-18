@@ -1,12 +1,16 @@
-const BookCard = ({ books }) => {
+import './Bookcard.css'
+
+
+const BookCard = ({ books, addToList }) => {
 
     return (
     <ul>
       {books.map((book, index) => (
-        <li key={index}>
-          <h3>{book.name}</h3>
-          <p>Author: {book.author}</p>
-          <p>Genre: {book.genre}</p>
+        <li key={index} className="book-card">
+          <h3 className="book-title"><strong>{book.title}</strong></h3>
+          <p className="book-info">Author:<strong> {book.author}</strong></p>
+          <p className="book-info">Genre: <strong>{book.genre}</strong></p>
+          <button onClick={() => addToList(book)}>Add to My list</button>
         </li>
       ))}
     </ul>
