@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import NavBar from './components/nav.jsx'
 import BookCard from './components/Bookcard.jsx'
+import Mylist from './components/Mylist.jsx'
 
 
 
@@ -11,9 +12,6 @@ import BookCard from './components/Bookcard.jsx'
 const App = () => {
   const [books, setBooks] = useState([]); 
   // setting 'books' as the useState variable. That way we can reference title, author, genre. 
-	const [title, setTitle] = useState('');
-	const [author, setAuthor] = useState('');
-  const [genre, setGenre] = useState('');
 
   // useEffect ==========================
   useEffect(() => {
@@ -49,9 +47,21 @@ const App = () => {
 // .toLowerCase makes it to where the search is not case sensitive. 
 // Doesnt matter what the user puts in, it'll be turned to lower case. 
 // .includes helps return any books that have any letters included in the searchTerm 
-
-
 // ======================================
+
+// Lift State ===================================
+  const [myList, setMyList] = useState([])
+  
+  const addToList = (newListItem) => {
+    console.log([...myList, newListItem])
+    setMyList([...myList, newListItem])
+  };
+
+  const removeFromList = (bookToRemove) => {
+    setMyList(prevList => 
+      prevList.filter(book => book !== bookToRemove)
+    );
+  };
 
   return (
     <>
@@ -69,9 +79,14 @@ const App = () => {
           // No longer have to pass the entire 'books' array  to BookCard because when the search bar is empty
           // searchTerm useState will be empty so 'filteredBooks will return all of the items in the array. 
         />
-      <BookCard books={filteredBooks}>
-        
-      </BookCard>
+      <BookCard 
+      books={filteredBooks}
+      addToList={addToList}></BookCard>
+      
+      <Mylist 
+      myList={myList}
+      removeFromList={removeFromList}></Mylist>
+
     </>
   );
 };
