@@ -21,9 +21,20 @@ const MyList = ({ myList, removeFromList }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setBookNotes(...bookNotes, newBookNotes);
+
+        const noteIndex = {...newBookNotes, index};
+
+        setBookNotes(prevBookNotes => [...bookNotes, newBookNotes]);
+        // better understand why we need prevBookNotes ******* 
         setNewBookNotes({notes: ''})
-    }
+    }; 
+
+    // const handleNotesChange = (index, value) => {
+    //     const updatedList = myList.map((book, index))
+    // }
+
+
+
     return (
 
         <h1> My List
@@ -50,8 +61,12 @@ const MyList = ({ myList, removeFromList }) => {
                             />
                             <button type='submit'>Add Notes</button>
                         </form>
-                        
-                </li>
+                    {/* <div className="bookCardsDiv">
+                        <section className="bookCard" onSubmit={handleInputChange}>
+                            Notes: {bookNotes}
+                        </section>
+                    </div> */}
+                </li>  
             ))}
         </ul>
             )}
