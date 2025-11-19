@@ -3,6 +3,10 @@ ul {
     gap: 10px;
 } 
 
+.mylisttitle {
+    color: white; 
+}
+
 .book-card {
   background: antiquewhite;   
   padding: 16px;          

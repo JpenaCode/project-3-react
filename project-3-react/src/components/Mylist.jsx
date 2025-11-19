@@ -36,10 +36,10 @@ const MyList = ({ myList, removeFromList }) => {
 
 
       return (
-    <h1 className="text-center my-4">
+    <h1 className="mylisttitle">
       My List
       {myList.length === 0 ? (
-        <p className="text-muted">Your List is Empty</p>
+        <p className="mylisttitle">Your List is Empty</p>
       ) : (
         <ul className="list-unstyled">
           {myList.map((book, index) => {
