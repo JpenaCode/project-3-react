@@ -36,12 +36,12 @@ const MyList = ({ myList, removeFromList }) => {
 
 
       return (
-    <h1>
+    <h1 className="text-center my-4">
       My List
       {myList.length === 0 ? (
-        <p>Your List is Empty</p>
+        <p className="text-muted">Your List is Empty</p>
       ) : (
-        <ul>
+        <ul className="list-unstyled">
           {myList.map((book, index) => {
             const noteForThisBook = bookNotes.find(
               (note) => note.index === index
@@ -49,30 +49,31 @@ const MyList = ({ myList, removeFromList }) => {
             );
 
             return ( // ***** why do we need two returns??? 
-              <li className="book-card" key={index}>
-                <button onClick={() => removeFromList(book)}>x</button>
-                <h3 className="book-title">
+              <li className="book-card card mb-3 p-3" key={index}>
+                <button className="btn btn-danger btn-sm" onClick={() => removeFromList(book)}>x</button>
+                <h3 className="book-title card-title">
                   <strong>{book.title}</strong>
                 </h3>
-                <p className="book-info">
+                <p className="book-info card-text">
                   Author: <strong>{book.author}</strong>
                 </p>
-                <p className="book-info">
+                <p className="book-info card-text">
                   Genre: <strong>{book.genre}</strong>
                 </p>
 
-                <form onSubmit={(event) => handleSubmit(event, index)}>
-                  <label htmlFor="notes">Add Notes: </label>
+                <form className="mt-2" onSubmit={(event) => handleSubmit(event, index)}>
+                  <label className="form-label" htmlFor="notes">Add Notes: </label>
                   <input
+                    className="form-control"
                     id="notes"
                     name="notes"
                     value={newBookNotes.notes}
                     onChange={handleInputChange}
                   />
-                  <button type="submit">Add Notes</button>
+                  <button type="submit" className="btn btn-primary btn-sm mt-2">Add Notes</button>
                 </form>
                     
-                <section className="bookCard-notes">
+                <section className="bookCard-notes mt-3">
                   <strong>Notes:</strong>{" "} 
                   {noteForThisBook ? noteForThisBook.notes : "No notes yet."}
                 </section>

@@ -5,9 +5,6 @@ import BookCard from './components/Bookcard.jsx'
 import Mylist from './components/Mylist.jsx'
 
 
-
-
-
 // import statements above
 const App = () => {
   const [books, setBooks] = useState([]); 
@@ -67,6 +64,7 @@ const App = () => {
     <>
       <NavBar></NavBar>
       <input
+          className="form-control my-4 w-75 mx-auto"
           type="text"
           placeholder="Search Library"
           value={searchTerm} 
